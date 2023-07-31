@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
 
   const routes = [
     {
@@ -30,6 +31,12 @@ export default function Sidebar() {
     }
   ];
 
+  const onNavigate = (url: string, pro: boolean) => {
+    // TODO: Check if PRO
+
+    return router.push(url);
+  };
+
   return (
     <div className="space-y-4 flex flex-col h-full text-primary bg-secondary">
       <div className="p-3 flex-1 flex justify-center">
@@ -37,6 +44,7 @@ export default function Sidebar() {
           {routes.map((route) => (
             <div
               key={route.href}
+              onClick={() => onNavigate(route.href, route.pro)}
               className={cn(
                 "text-muted-foreground text-xs group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-primary hover:bg-primary/10 rounded-lg transition",
                 pathname === route.href && "bg-primary/10 text-primary"
