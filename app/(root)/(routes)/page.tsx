@@ -4,6 +4,7 @@ import SearchInput from "@/components/search-input";
 import Categories from "@/components/categories";
 
 import prismadb from "@/lib/prismadb";
+import Companions from "@/components/companions";
 
 interface RootPageProps {
   searchParams: {
@@ -38,6 +39,7 @@ export default async function RootPage({ searchParams }: RootPageProps) {
     <div className="h-full p-4 space-y-2">
       <SearchInput />
       <Categories data={categories} />
+      <Companions data={data} />
     </div>
   );
 }
