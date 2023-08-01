@@ -6,6 +6,7 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Wand2 } from "lucide-react";
+import axios from "axios";
 
 import {
   Form,
@@ -89,7 +90,13 @@ export default function CompanionForm({
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    try {
+      if (initialData)
+        await axios.patch(`/api/companion/${initialData.id}`, values);
+      else await axios.post("/api/companion", values);
+    } catch (error) {
+      console.error(error, "SOMETHING WENT WRONG");
+    }
   };
 
   return (
