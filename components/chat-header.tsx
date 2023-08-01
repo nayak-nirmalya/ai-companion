@@ -46,7 +46,7 @@ export default function ChatHeader({ companion }: ChatHeaderProps) {
     } catch (error) {
       toast({
         variant: "destructive",
-        description: "Something went wrong."
+        description: "Something Went Wrong."
       });
     }
   };
