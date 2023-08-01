@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Wand2 } from "lucide-react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 import {
   Form,
@@ -28,6 +29,7 @@ import {
   SelectValue,
   SelectTrigger
 } from "@/components/ui/select";
+import { useToast } from "@/components/ui/use-toast";
 import { ImageUpload } from "@/components/image-upload";
 
 interface CompanionFormProps {
@@ -75,6 +77,9 @@ export default function CompanionForm({
   initialData,
   categories
 }: CompanionFormProps) {
+  const { toast } = useToast();
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
@@ -91,11 +96,23 @@ export default function CompanionForm({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      if (initialData)
+      if (initialData) {
         await axios.patch(`/api/companion/${initialData.id}`, values);
-      else await axios.post("/api/companion", values);
+      } else {
+        await axios.post("/api/companion", values);
+      }
+
+      toast({
+        description: "Success."
+      });
+
+      router.refresh();
+      router.push("/");
     } catch (error) {
-      console.error(error, "SOMETHING WENT WRONG");
+      toast({
+        variant: "destructive",
+        description: "Something Went Wrong!"
+      });
     }
   };
 
