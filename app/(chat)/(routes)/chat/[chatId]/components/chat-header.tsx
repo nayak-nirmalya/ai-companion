@@ -6,6 +6,7 @@ import { ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
+import BotAvatar from "@/components/bot-avatar";
 
 interface ChatHeaderProps {
   companion: Companion & {
@@ -23,6 +24,7 @@ export default function ChatHeader({ companion }: ChatHeaderProps) {
         <Button onClick={() => router.back()} size="icon" variant="ghost">
           <ChevronLeft className="h-8 w-8" />
         </Button>
+        <BotAvatar />
       </div>
     </div>
   );
