@@ -16,7 +16,7 @@ export class MemoryManager {
 
   public constructor() {
     this.history = Redis.fromEnv();
-    this.vectorDBClient = new PrismaClient();
+    this.vectorDBClient = new PineconeClient();
   }
 
   public async init() {
