@@ -3,6 +3,8 @@
 import React from "react";
 import { Companion } from "@prisma/client";
 
+import ChatMessage from "@/components/chat-message";
+
 interface ChatMessagesProps {
   messages: any[];
   isLoading: boolean;
@@ -14,5 +16,13 @@ export default function ChatMessages({
   isLoading,
   messages
 }: ChatMessagesProps) {
-  return <div className="flex-1 overflow-y-auto pr-4">ChatMessages</div>;
+  return (
+    <div className="flex-1 overflow-y-auto pr-4">
+      <ChatMessage
+        src={companion.src}
+        role="system"
+        content={`Hello, I'm ${companion.name}, ${companion.description}.`}
+      />
+    </div>
+  );
 }
