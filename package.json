@@ -33,6 +33,7 @@
     "clsx": "^2.0.0",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "langchain": "^0.0.121",
     "lucide-react": "^0.263.1",
     "next": "13.4.12",
     "next-cloudinary": "^4.16.3",
