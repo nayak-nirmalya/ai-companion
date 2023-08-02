@@ -96,7 +96,7 @@ export class MemoryManager {
   }
 
   public async seedChatHistory(
-    seedContent: string,
+    seedContent: String,
     delimiter: string = "\n",
     companionKey: CompanionKey
   ) {
