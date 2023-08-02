@@ -7,6 +7,7 @@ import { useCompletion } from "ai/react";
 
 import ChatHeader from "@/components/chat-header";
 import ChatForm from "@/components/chat-form";
+import ChatMessages from "@/components/chat-messages";
 
 interface ChatClientProps {
   companion: Companion & {
@@ -51,7 +52,11 @@ export default function ChatClient({ companion }: ChatClientProps) {
   return (
     <div className="flex flex-col h-full p-4 space-y-2">
       <ChatHeader companion={companion} />
-      <div>Messaegs TODO</div>
+      <ChatMessages
+        companion={companion}
+        isLoading={isLoading}
+        messages={messages}
+      />
       <ChatForm
         handleInputChange={handleInputChange}
         input={input}
