@@ -8,8 +8,10 @@ import { Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/components/ui/use-toast";
 import BotAvatar from "@/components/bot-avatar";
+import UserAvatar from "@/components/user-avatar";
+import { Button } from "./ui/button";
 
-interface ChatMessageProps {
+export interface ChatMessageProps {
   role: "system" | "user";
   content?: string;
   isLoading?: boolean;
@@ -47,6 +49,17 @@ export default function ChatMessage({
           content
         )}
       </div>
+      {role === "user" && <UserAvatar />}
+      {role !== "user" && (
+        <Button
+          className="opacity-0 group-hover:opacity-100 transition"
+          onClick={onCopy}
+          size="icon"
+          variant="ghost"
+        >
+          <Copy className="w-4 h-4" />
+        </Button>
+      )}
     </div>
   );
 }
