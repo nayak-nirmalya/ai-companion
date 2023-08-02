@@ -23,6 +23,10 @@ export default function ChatMessages({
         role="system"
         content={`Hello, I'm ${companion.name}, ${companion.description}.`}
       />
+      <ChatMessage
+        role="user"
+        content={`Hello, I'm ${companion.name}, ${companion.description}.`}
+      />
     </div>
   );
 }
