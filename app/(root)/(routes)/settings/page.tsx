@@ -13,8 +13,8 @@ export default async function SettingsPage() {
         {isPro
           ? "You are currently on a Pro plan."
           : "You are currently on a free plan."}
+        <SubscriptionButton isPro={isPro} />
       </div>
-      <SubscriptionButton isPro={isPro} />
     </div>
   );
 }
