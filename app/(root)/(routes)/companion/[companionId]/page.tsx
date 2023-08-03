@@ -1,8 +1,8 @@
 import React from "react";
+import { auth, redirectToSignIn } from "@clerk/nextjs";
 
 import prismadb from "@/lib/prismadb";
 import CompanionForm from "./components/companion-form";
-import { auth, redirectToSignIn } from "@clerk/nextjs";
 
 interface CompanionIdPageProps {
   params: {
@@ -14,8 +14,6 @@ export default async function CompanionIdPage({
   params
 }: CompanionIdPageProps) {
   const { userId } = auth();
-
-  // TODO: check subscripton
 
   if (!userId) return redirectToSignIn();
 
