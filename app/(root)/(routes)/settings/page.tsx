@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SubscriptionButton } from "@/components/subscription-button";
+import SubscriptionButton from "@/components/subscription-button";
 import { checkSubscription } from "@/lib/subscription";
 
 export default async function SettingsPage() {
